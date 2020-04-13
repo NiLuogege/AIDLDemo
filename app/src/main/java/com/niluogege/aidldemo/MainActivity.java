@@ -14,6 +14,9 @@ import android.view.View;
 
 import com.niluogege.service.TestAidlInterface;
 
+/**
+ * 客户端，用于调用服务
+ */
 public class MainActivity extends AppCompatActivity {
     TestAidlInterface service;
 
