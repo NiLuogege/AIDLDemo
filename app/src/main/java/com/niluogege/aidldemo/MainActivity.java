@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {//这里的service就是 服务端Service onBind 方法中返回的 Stub对象。
-            Log.d("MainActivity", "onServiceConnected name:" + name);
+            Log.d("MainActivity", "onServiceConnected name:" + name + " IBinder= " + service);
             MainActivity.this.service = TestAidlInterface.Stub.asInterface(service);
         }
 
@@ -45,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setAction("com.niluogege.aidl.TestAidlService");
                 //设置服务端 Service包名
-                intent.setPackage("com.niluogege.service");
+//                intent.setPackage("com.niluogege.service");
+                //同一个进程下 使用aidl测试
+                intent.setPackage("com.niluogege.aidldemo");
                 bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
             }
         });
