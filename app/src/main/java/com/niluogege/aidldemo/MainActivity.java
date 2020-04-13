@@ -18,11 +18,12 @@ import com.niluogege.service.TestAidlInterface;
  * 客户端，用于调用服务
  */
 public class MainActivity extends AppCompatActivity {
+    //实际是 TestAidlInterface.Stub.Proxy 对象
     TestAidlInterface service;
 
     ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
+        public void onServiceConnected(ComponentName name, IBinder service) {//这里的service就是 服务端Service onBind 方法中返回的 Stub对象。
             Log.d("MainActivity", "onServiceConnected name:" + name);
             MainActivity.this.service = TestAidlInterface.Stub.asInterface(service);
         }
