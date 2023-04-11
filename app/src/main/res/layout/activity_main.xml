@@ -27,6 +27,13 @@
         android:text="调用方法" />
 
     <Button
+        android:id="@+id/tv_test_any"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="测试远程调用导致ANY，需要多次点击才能触发" />
+
+    <Button
         android:id="@+id/tv_unbind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

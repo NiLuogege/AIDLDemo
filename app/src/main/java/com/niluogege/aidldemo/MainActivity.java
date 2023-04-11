@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 
@@ -58,6 +59,20 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     int add = service.calculation(1, 3);
                     Log.d("MainActivity", "add:" + add);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        findViewById(R.id.tv_test_any).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    long start = SystemClock.currentThreadTimeMillis();
+                    service.testANR();
+                    long end = SystemClock.currentThreadTimeMillis();
+                    Log.d("MainActivity", "tv_test_any use time" + (end-start)+" ms");
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

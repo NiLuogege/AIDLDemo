@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -68,6 +69,12 @@ public class TestSameProcessService extends Service {
         @Override
         public int calculation(int a, int b) throws RemoteException {
             return a + b;
+        }
+
+        @Override
+        public void testANR() throws RemoteException {
+            //用来模拟耗时操作
+            SystemClock.sleep(10000);
         }
     };
 

@@ -7,4 +7,6 @@ interface TestAidlInterface {
 
 
     int calculation(int a,int b);
+
+    void testANR();
 }
